@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => 'sqlite',
+    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,15 +45,21 @@ return [
     */
 
     'connections' => [
+        
+        /* TODO: Dirty. Mixing testing and production configs. Find work-around. */
+        'sqlite_testing' => [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ],
 
-        /* TODO: Devel purposes */
         'sqlite' => [
             'driver'   => 'sqlite',
             'database' => storage_path('testdb.sqlite'),
             'prefix'   => '',
         ],
 
-        /*'mysql' => [
+        'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
             'port'      => '',
@@ -87,7 +93,7 @@ return [
             'password' => '',
             'charset'  => 'utf8',
             'prefix'   => '',
-        ], */
+        ],
 
     ],
 

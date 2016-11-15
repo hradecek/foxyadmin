@@ -13,11 +13,8 @@
          syntaxCheck="false"
          verbose="false">
     <testsuites>
-        <!--testsuite name="Application Test Suite">
-            <directory>./tests/</directory>
-        </testsuite-->
-        <testsuite name="User Module Test Suite">
-            <directory suffix="TestCase.php">./packages/foxytouch/user/tests/</directory>
+        <testsuite name="Test Suite">
+            <directory suffix="TestCase.php">./packages/foxytouch/*/tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -30,7 +27,6 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <!-- env name="DB_DATABASE" value=":memory:"/-->
+        <env name="DB_CONNECTION" value="sqlite_testing"/>
     </php>
 </phpunit>

@@ -11,17 +11,17 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase {
 
     /**
      * The base URL to use while testing the application.
-     * 
+     *
      * @var string
      */
     protected $baseUrl = 'http://localhost';
-    
+
     protected $faker;
 
     /**
      * TODO: Test temp dir
      */
-    
+
     /**
      * Creates the application.
      * 
@@ -38,10 +38,12 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase {
     public function setUp()
     {
         parent::setUp();
-        Artisan::call('migrate', ['--path' => 'packages/foxytouch/user/src/database/migrations/']); /* TODO: */
+        Artisan::call('migrate', [
+            '--database' => 'sqlite_testing', /* TODO: Ugly. See config/database.php */
+            '--path' => 'packages/foxytouch/user/src/database/migrations/']); /* TODO: Dependency */
         $this->faker = Factory::create();
     }
-    
+
     public function tearDown()
     {
         Artisan::call('migrate:reset');
