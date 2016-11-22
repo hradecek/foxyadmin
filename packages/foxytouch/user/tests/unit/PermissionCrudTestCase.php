@@ -1,5 +1,7 @@
 <?php
 
+namespace Foxytouch\User\Tests\Unit;
+
 use Foxytouch\Tests\TestCase;
 use Foxytouch\User\Models\Permission;
 use Foxytouch\User\Repositories\Contracts\PermissionRepository;
@@ -7,7 +9,7 @@ use Foxytouch\User\Repositories\Contracts\PermissionRepository;
 /**
  * Class PermissionCrudTestCase
  * 
- * @package \Foxytouch\Tests\TestCase
+ * @package \Foxytouch\Tests\Unit
  * @author Ivo Hradek <ivohradek@gmail.com>
  */
 class PermissionCrudTestCase extends TestCase
@@ -96,12 +98,10 @@ class PermissionCrudTestCase extends TestCase
     
     private function getMockRequest()
     {
-        $formRequest = [
+        return [
             'name' => $this->faker->unique()->userName,
             'description' => $this->faker->sentence
         ];
-
-        return $formRequest;
     }
     
     private function assertSamePermission(array $expected, $actual)
@@ -109,15 +109,4 @@ class PermissionCrudTestCase extends TestCase
         $this->assertEquals($expected['name'], $actual->name, 'Name should be same');
         $this->assertEquals($expected['description'], $actual->description, 'Description should be same');
     }
-    
-    private function getRandomPermission($isPersisted = false)
-    {
-        $permission = new Permission;
-        $permission->name = $this->faker->userName;
-        $permission->description = $this->faker->sentence();
-        $permission->id = $isPersisted ? $this->faker->unique()->randomNumber() : null;
-        
-        return $permission;
-    }
-
 }

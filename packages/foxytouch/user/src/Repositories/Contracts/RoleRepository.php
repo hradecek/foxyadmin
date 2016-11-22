@@ -13,9 +13,7 @@ use Foxytouch\Repositories\Contracts\BaseRepository;
  */
 interface RoleRepository extends BaseRepository
 {
-    function findByName($name);
-    
-    function findAllByName(array $names);
+    // function findAllByName(array $names);
 
-    public function findAllModelsByNames($names);
+    // public function findAllModelsByNames($names);
 }

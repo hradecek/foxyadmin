@@ -24,13 +24,6 @@ class Role extends Model
     use HasPermissions;
 
     /**
-     * Associated table.
-     *
-     * @var string
-     */
-    protected $table = 'role'; /* TODO: change name; possibly to config */
-
-    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

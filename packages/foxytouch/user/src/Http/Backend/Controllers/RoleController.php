@@ -4,9 +4,15 @@ namespace Foxytouch\User\Http\Backend\Controllers;
 
 use Foxytouch\Http\Backend\Controllers\Controller;
 
-use Foxytouch\User\Repositories\Contracts\RoleRepository;
 use Foxytouch\User\Http\Backend\Requests\CreateRoleRequest;
 use Foxytouch\User\Http\Backend\Requests\UpdateRoleRequest;
+
+use Foxytouch\User\Repositories\Contracts\RoleRepository;
+use Foxytouch\User\Repositories\Contracts\PermissionRepository;
+
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * Role controller.
@@ -22,13 +28,20 @@ class RoleController extends Controller
     private $role;
 
     /**
+     * @var PermissionRepository
+     */
+    private $permission;
+
+    /**
      * RoleController constructor.
      *
      * @param RoleRepository $role
+     * @param PermissionRepository $permission
      */
-    public function __construct(RoleRepository $role)
+    public function __construct(RoleRepository $role, PermissionRepository $permission)
     {
         $this->role = $role;
+        $this->permission = $permission;
     }
 
     /**
@@ -63,7 +76,11 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('users::backend.roles.create');
+        $permissions = $this->permission->all(['id', 'name'])->keyBy('id')->map(function ($item) {
+            return $item['name'];
+        })->toArray();
+
+        return view('users::backend.roles.create', compact('permissions'));
     }
 
     /**
@@ -124,11 +141,11 @@ class RoleController extends Controller
         $this->role->destroy($role); /*TODO: Check success */
 
         $message = trans('general.success_destroy');
-        return !Request::ajax() ?
-            Redirect::route('auth.role.index')
-                ->with('success', $message) :
-            response()->json([
-                'id' => $id, 'success' => $message
-            ]);
+        $ajaxResponse = response()->json([
+            'id' => $id, 'success' => $message
+        ]);
+        $redirect = Redirect::route('auth.role.index')->with('success', $message);
+        
+        return !Request::ajax() ? $redirect : $ajaxResponse;
     }
 }
