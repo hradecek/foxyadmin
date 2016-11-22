@@ -106,8 +106,11 @@ class RoleController extends Controller
     public function edit($name)
     {
         $role = $this->role->findBy('name', $name);
+        $map = function ($p) { return $p['name']; };
+        $permissions = $this->permission->all(['id', 'name'])->keyBy('id')->map($map)->toArray();
+        $rolesPermissions = $this->permission->getForModel($role)->keyBy('id')->map($map)->toArray();
 
-        return view('users::backend.roles.edit', compact('role'));
+        return view('users::backend.roles.edit', compact('role', 'permissions', 'rolesPermissions'));
     }
 
     /**
