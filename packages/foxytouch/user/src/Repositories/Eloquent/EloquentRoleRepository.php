@@ -31,11 +31,17 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         
         return $model;
     }
-
+    
     private function sync($model, array $data)
     {
         if (array_key_exists('permission', $data) && is_array($data['permission'])) {
             $model->permissions()->sync($data['permission']);
         }
+    }
+
+    public function destroy($model)
+    {
+        $model->permissions()->detach();
+        $model->delete();
     }
 }

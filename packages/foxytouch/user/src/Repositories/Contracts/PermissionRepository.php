@@ -12,4 +12,6 @@ use Foxytouch\Repositories\Contracts\BaseRepository;
  * @package Foxytouch\User\Repositories
  */
 interface PermissionRepository extends BaseRepository
-{ }
+{
+    function getForModel($model);
+}

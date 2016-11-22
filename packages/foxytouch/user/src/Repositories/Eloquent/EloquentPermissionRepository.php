@@ -13,4 +13,9 @@ use Foxytouch\User\Repositories\Contracts\PermissionRepository;
  * @author Ivo Hradek <ivohradek@gmail.com>
  */
 class EloquentPermissionRepository extends EloquentBaseRepository implements PermissionRepository
-{ }
+{
+    public function getForModel($model)
+    {
+        return $model->permissions;
+    }
+}
