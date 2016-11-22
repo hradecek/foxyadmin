@@ -2,6 +2,7 @@
 
 namespace Foxytouch;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application as App;
 
 /**
@@ -27,7 +28,14 @@ class Application extends App
      * 
      * @var
      */
-    public $loader;
+    public $classLoader;
+
+    /**
+     * Alias loader;
+     * 
+     * @var
+     */
+    public $aliasLoader;
 
     /**
      * Application constructor.
@@ -37,7 +45,8 @@ class Application extends App
     public function __construct($basePath)
     {
         parent::__construct($basePath);
-        $this->loader = require base_path() . self::AUTOLOAD_DIR;
+        $this->classLoader = require base_path() . self::AUTOLOAD_DIR;
+        $this->aliasLoader = AliasLoader::getInstance();
     }
 
     /**
