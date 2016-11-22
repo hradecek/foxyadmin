@@ -16,25 +16,26 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepository
 {
-    public function findByName($name)
+    public function create(array $data)
     {
-        return $this->model->byName($name)->first();
-    }
-    
-    public function findAllByName(array $names)
-    {
-        $items = [];
-        foreach ($names as $name) {
-            array_push($items, $this->model->byName($name)->first());
-        }
-        return (!$items[0]) ? null : Collection::make($items);
+        $model = $this->model->create($data);
+        $this->sync($model, $data);
+
+        return $model;
     }
 
-    public function findAllModelsByNames($names)
+    public function update($model, array $data)
     {
-        if (empty($names)) {
-            return [];
+        $model->update($data);
+        $this->sync($model, $data);
+        
+        return $model;
+    }
+
+    private function sync($model, array $data)
+    {
+        if (array_key_exists('permission', $data) && is_array($data['permission'])) {
+            $model->permissions()->sync($data['permission']);
         }
-        return array_map(function ($r) { return $this->findByName($r); }, $names);
     }
 }

@@ -20,6 +20,7 @@ use Foxytouch\User\Repositories\Eloquent\EloquentPermissionRepository;
 use Foxytouch\Providers\PackageServiceProvider as ServiceProvider;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\AliasLoader;
 
 /**
  * User Service Provider.
@@ -33,9 +34,16 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Log::info('[UserServiceProvider] Booting');
         parent::boot();
+        
+        Log::info('[UserServiceProvider] Booting');
+        
         $this->package(__DIR__, 'users');
+        $aliases = [
+            'Form' => 'Collective\Html\FormFacade',
+            'Html' => 'Collective\Html\FormFacade'
+        ];
+        $this->loadAliases($aliases);
     }
 
     /**

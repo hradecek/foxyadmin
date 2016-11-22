@@ -44,4 +44,9 @@ trait HasPermissions
     {
         $this->permissions()->detach($id);
     }
+
+    public function syncPermissions(array $ids)
+    {
+        $this->permissions()->sync($ids);
+    }
 }
