@@ -94,6 +94,41 @@ class RoleCrudTestCase extends TestCase
         $this->assertSameRole($formRequest, $createdRole);
     }
 
+    /**
+     * Given
+     * When
+     * then.
+     */
+    public function testDestroyValidRoleWithoutPermission()
+    {
+        $createdRole = $this->roleRepository->create($this->getMockRequest());
+
+        $this->roleRepository->destroy($createdRole);
+        
+        $actual = $this->roleRepository->find($createdRole->id);
+        $this->assertTrue(null == $actual, 'Role should be destroyed');
+    }
+
+    /**
+     * Given
+     * When
+     * then.
+     */
+    public function testDestroyValidRoleWithPermissions()
+    {
+        $createdRole = $this->roleRepository->create($this->getMockRequestWithPermissions(3));
+
+        $this->roleRepository->destroy($createdRole);
+        
+        $actual = $this->roleRepository->find($createdRole->id);
+        $this->assertTrue(null == $actual, 'Role should be destroyed');
+
+        foreach ($createdRole->permissions as $permission) {
+            $actual = $this->permissionRepository->find($permission->id);
+            $this->assertFalse(null == $actual, 'Role\'s permission should not be destroyed');
+        }
+    }
+    
     private function getMockRequest()
     {
         return [
@@ -102,7 +137,7 @@ class RoleCrudTestCase extends TestCase
         ];
 
     }
-
+    
     private function getMockRequestWithPermissions($count)
     {
         $formRequest = $this->getMockRequest();
