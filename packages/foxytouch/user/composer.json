@@ -1,0 +1,37 @@
+{
+    "name": "foxytouch/user",
+    "description": "FoxyAdmin User Management module",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Ivo Hradek",
+            "email": "ivohradek@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/database"
+        ],
+        "psr-4": {
+            "Foxytouch\\User\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Foxytouch\\User\\Tests\\Unit\\": "tests/unit/"
+        }
+    },
+    "require": {
+        "illuminate/support": "5.1.*",
+        "intervention/image": "2.3.*",
+        "laravelcollective/html": "5.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.6"
+    }
+}
+

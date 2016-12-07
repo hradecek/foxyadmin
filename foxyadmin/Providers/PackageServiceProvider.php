@@ -82,8 +82,6 @@ abstract class PackageServiceProvider extends ServiceProvider
         $this->publishesPublic($publicPath, $namespace);
         
         $this->publishesMigrations();
-
-        // $this->loadFrontendViewsFrom($namespace)
     }
 
     /**
@@ -160,6 +158,13 @@ abstract class PackageServiceProvider extends ServiceProvider
     {
         foreach ($classes as $class) {
             $this->app->make($class);
+        }
+    }
+
+    protected function loadAliases(array $aliases)
+    {
+        foreach ($aliases as $alias => $class) {
+            $this->app->aliasLoader->alias($alias, $class);
         }
     }
 }
