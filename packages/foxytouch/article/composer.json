@@ -1,0 +1,25 @@
+{
+    "name": "foxytouch/article",
+    "description": "Foxyadmin Articles Manager module",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Ivo Hradek",
+            "email": "ivohradek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Foxytouch\\Article\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "foxytouch/user": "1.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.6"
+    }
+}
