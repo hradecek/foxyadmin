@@ -29,7 +29,7 @@ class UserController extends Controller
      * Path to default article thumb.
      */
     private $defaultProfilePicture;
-    
+
     /**
      * @var UserRepository
      */
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->user->all();
-        
+
         return view('users::backend.users.index', compact('users'));
     }
 
@@ -81,12 +81,11 @@ class UserController extends Controller
      */
     public function show($username)
     {
-        authorize('user', 0b0100);
+        $user = $this->user->findBy('username', $username);
 
-        $user = $this->user->findByUsername($username);
         return view('users::backend.users.show', compact('user'));
     }
-    
+
     /**
      * Show the form for creating a new {@link \Foxytouch\User\Models\User user}.
      *
@@ -116,16 +115,49 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        /* TODO: Do somethings about uploaded file, 
-         *       - Repository is dependent on UploadedFile 
-         *       - Work-around: pass a filename
-         * */
+        $this->user->create($request->all());
 
         Log::info('New user: ' . $request->username . ' has been created');
         return Redirect::route('auth.user.index')
                        ->with('success', trans('general.success_create'));
     }
 
+    /**
+     * Show edit form for specific {@link \Foxytouch\User\Models\User user}.
+     *
+     * @param $username
+     * @return \Illuminate\View\View
+     */
+    public function edit($username)
+    {
+        $map = function ($i) { return $i['name']; };
+        $roles = $this->role->all(['id', 'name'])->keyBy('id')->map($map)->toArray();
+        $permissions = $this->permission->all(['id', 'name'])->keyBy('id')->map($map)->toArray();
+        
+        /* TODO: Not found? */
+        $user = $this->user->findBy('username', $username);
+        
+        return view('users::backend.users.edit', compact('roles', 'permissions', 'user'));
+    }
+
+    /**
+     * Update information of specific {@link \Foxytouch\User\Models\User user}.
+     *
+     * @param $username
+     * @param UpdateUserRequest $request - form request
+     * @return \Illuminate\Http\Response
+     * @internal param User $user - user to update.
+     */
+    public function update($username, UpdateUserRequest $request)
+    {
+        $user = $this->user->findBy('username', $username);
+        $this->user->update($user, $request->all());
+        
+        Log::info("User: $user->id has been updated.");
+        return Redirect::route('auth.user.index')
+                       ->with('success', trans('general.success_update'));
+    }
+    
     /**
      * <p>
      * Delete specific {@link \Foxytouch\User\Models\User user}.
@@ -141,67 +173,19 @@ class UserController extends Controller
      */
     public function destroy($username)
     {
-        authorize('user', 0b0001);
-
-        $admins = $this->group->findByName('admin')->users;
-        $user = $this->user->findByUsername($username);
-
-        // Ensure there is at least one admin in the system
-        if ($user->hasGroup(['admin']) && $admins->count() == 1) {
-            return 'Last man standing';
-        }
+        /* TODO: Super-user hidden 
+         * You should not been able to remove all users.
+         */
+        $user = $this->user->findBy('username', $username);
+        $username = $user->username;
+        
         $this->user->destroy($user);
 
-        Log::info("User: {$user->username} has been removed");
+        Log::info("User: $username has been removed");
         return Redirect::route('auth.user.index')
-                       ->with('success', trans('users::user.success_delete'));
+                       ->with('success', trans('general.success_delete'));
     }
-
-    /**
-     * Show edit form for specific {@link \Foxytouch\User\Models\User user}.
-     *
-     * @param $username
-     * @return \Illuminate\View\View
-     * @internal param User $user - user to edit.
-     */
-    public function edit($username)
-    {
-        $user = $this->user->findByUsername($username);
-
-        authorizeWithOwnership($user->id, 'user', 0b0010);
-
-        // Not only user groups, but all groups also
-        $groupNames = $user->groups->map(function ($item) {
-            return $item->name;
-        })->toArray();
-        $permissions = $this->permission->all();
-        $groups = array_combine($groupNames, $groupNames);
-
-        return view('users::backend.users.edit', compact('groups', 'permissions', 'user'));
-    }
-
-    /**
-     * Update information of specific {@link \Foxytouch\User\Models\User user}.
-     *
-     * @param $username
-     * @param UpdateUserRequest $request - form request
-     * @return \Illuminate\Http\Response
-     * @internal param User $user - user to update.
-     */
-    public function update($username, UpdateUserRequest $request)
-    {
-        $user = $this->user->findByUsername($username);
-
-        authorizeWithOwnership($user->id, 'user', 0b0010);
-
-        $groups = array_map(function ($r) { return $this->group->findByName($r); }, $request->group);
-        $this->user->updateWithGroups($user, $request->all(), $groups);
-
-        Log::info("User: {$user->username} has been updated");
-        return Redirect::route('auth.user.index')
-                       ->with('success', trans('users::user.success_update'));
-    }
-
+    
     /**
      * Group
      *
