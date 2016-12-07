@@ -52,12 +52,14 @@ class CreateUserRequest extends FormRequest
     {
         $roleTable = config('users.table.name.role', 'role');
         $userTable = config('users.table.name.user', 'user');
+        $permissionTable = config('users.table.name.permission', 'permission');
         
         return [
             'username'        => "required|max:255|unique:$userTable",
             'email'           => "required|email|max:255|unique:$userTable",
             'password'        => 'required|confirmed|max:255',
-            'role'            => "exists:$roleTable,name",
+            'role.*'          => "exists:$roleTable,name",
+            'permission.*'    => "exists:$permissionTable,name",
             'profile_picture' => 'image'
         ];
     }

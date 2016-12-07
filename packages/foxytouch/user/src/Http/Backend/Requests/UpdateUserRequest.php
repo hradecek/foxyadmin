@@ -68,15 +68,17 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
+        $userId = $this->getUserIdFromRouteParameter();
         $userTable = config('users.table.name.user', 'user');
         $roleTable = config('users.table.name.role', 'role');
-        $userId = $this->getUserIdFromRouteParameter();
+        $permissionTable = config('users.table.name.permission', 'permission');
 
         return [
             'username'        => "required|max:60|unique:$userTable,username,$userId",
             'email'           => "required|email|max:255|unique:$userTable,email,$userId",
             'password'        => 'sometimes|confirmed|max:255',
-            'role'            => "exists:$roleTable,name",
+            'role.*'          => "exists:$roleTable,name",
+            'permission.*'    => "exists:$permissionTable,name",
             'profile_picture' => 'image'
         ];
     }

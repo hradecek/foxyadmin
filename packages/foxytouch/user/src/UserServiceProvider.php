@@ -41,7 +41,8 @@ class UserServiceProvider extends ServiceProvider
         $this->package(__DIR__, 'users');
         $aliases = [
             'Form' => 'Collective\Html\FormFacade',
-            'Html' => 'Collective\Html\FormFacade'
+            'Html' => 'Collective\Html\HtmlFacade',
+            'Image' => 'Intervention\Image\Facades\Image'
         ];
         $this->loadAliases($aliases);
     }
@@ -54,6 +55,7 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         Log::info('[UserServiceProvider] Registering');
+        $this->app->register('Intervention\Image\ImageServiceProvider');
         Log::info('[UserServiceProvider] Binding');
         $this->app->bind(UserRepository::class, function() {
             return new EloquentUserRepository(new User);

@@ -20,7 +20,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers;
-    
+
     /**
      * @var UserRepository
      */
@@ -70,7 +70,7 @@ class AuthController extends Controller
     public function getLogout()
     {
         $username = Auth::user()->username;
-        
+
         Auth::logout();
         $this->user->updateAfterLogout();
 
