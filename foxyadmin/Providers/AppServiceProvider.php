@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
              $composer = json_decode(file_get_contents($provider['base_path'] . '/composer.json'), true);
              /* TODO: Load PSR-4 */
              foreach ($composer['autoload']['psr-4'] as $namespace => $src) {
-                 $this->app->loader->setPsr4($namespace, $provider['base_path'] . '/' .$src);
+                 $this->app->classLoader->setPsr4($namespace, $provider['base_path'] . '/' .$src);
              }
              // $this->app->loader->setPsr4(, )
              // $loader->setPsr4("Plugins\\", __DIR__ . "/../plugins");
