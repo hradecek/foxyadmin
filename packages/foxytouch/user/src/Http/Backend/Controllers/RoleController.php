@@ -148,7 +148,7 @@ class RoleController extends Controller
             'id' => $id, 'success' => $message
         ]);
         $redirect = Redirect::route('auth.role.index')->with('success', $message);
-        
-        return !Request::ajax() ? $redirect : $ajaxResponse;
+
+        return Request::ajax() ? $ajaxResponse : $redirect;
     }
 }

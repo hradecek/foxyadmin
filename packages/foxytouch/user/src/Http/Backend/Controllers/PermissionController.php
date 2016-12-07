@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Request;
 
 /**
  * Permission controller.
- * 
+ *
  * @package \Foxytouch\User\Http\Backend\Controllers
  * @author Ivo Hradek <ivohradek@gmail.com>
  */
@@ -26,7 +26,7 @@ class PermissionController extends Controller
 
     /**
      * PermissionController constructor.
-     * 
+     *
      * @param PermissionRepository $permission
      */
     public function __construct(PermissionRepository $permission)
@@ -36,7 +36,7 @@ class PermissionController extends Controller
 
     /**
      * Show all permissions.
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -48,20 +48,20 @@ class PermissionController extends Controller
 
     /**
      * Show specific permission by its name.
-     * 
+     *
      * @param string $name permission name to be shown
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($name)
     {
         $permission = $this->permission->findBy('name', $name);
-        
+
         return view('users::backend.permissions.show', compact('permission'));
     }
 
     /**
      * Show permission view for creation.
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
@@ -71,14 +71,14 @@ class PermissionController extends Controller
 
     /**
      * Store created permission.
-     * 
+     *
      * @param CreatePermissionRequest $request form request
      */
     public function store(CreatePermissionRequest $request)
     {
         $this->permission->create($request->all());
         Log::info('New permission: ' . $request->name . ' has been created.');
-        
+
         return Redirect::route('auth.permission.index')
                        ->with('success', trans('general.success_create'));
     }
@@ -98,7 +98,7 @@ class PermissionController extends Controller
 
     /**
      * Update permission.
-     * 
+     *
      * @param $name
      * @param UpdatePermissionRequest $request
      * @return mixed
@@ -106,7 +106,7 @@ class PermissionController extends Controller
     public function update($name, UpdatePermissionRequest $request)
     {
         $permission = $this->permission->findBy('name', $name);
-        
+
         $this->permission->update($permission, $request->all()); /*TODO: Check success */
 
         Log::info("Permission: {$permission->name} has been updated.");
@@ -116,7 +116,7 @@ class PermissionController extends Controller
 
     /**
      * Destroy permission.
-     * 
+     *
      * @param string $name permission's name to be deleted
      * @return \Illuminate\Http\JsonResponse
      */
@@ -127,12 +127,11 @@ class PermissionController extends Controller
         $this->permission->destroy($permission); /*TODO: Check success */
 
         $message = trans('general.success_destroy');
-        return !Request::ajax() ?
-            Redirect::route('auth.permission.index')
-                    ->with('success', $message) :
-            response()->json([
-                'id' => $id, 'success' => $message
-            ]);
-    }
+        $ajaxResponse = response()->json([
+            'id' => $id, 'success' => $message
+        ]);
+        $redirect = Redirect::route('auth.permission.index')->with('success', $message);
 
+        return Request::ajax() ? $ajaxResponse : $redirect;
+    }
 }
