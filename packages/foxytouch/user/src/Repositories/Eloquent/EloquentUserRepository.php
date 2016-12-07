@@ -24,61 +24,32 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         if (array_key_exists('profile_picture', $data)) {
             $this->model->profile_picture_uri = $this->createUserImage($data['profile_picture']);
         }
-        if (array_key_exists('permission', $data) && is_array($data['permission'])) {
-            $this->model->permissions()->sync($data['permission']);
-        }
+
         $this->model->password = $data['password'];
         $this->model->fill($data);
         $this->model->save();
         
+        if (array_key_exists('permission', $data) && is_array($data['permission'])) {
+            $this->model->permissions()->sync($data['permission']);
+        }
+        if (array_key_exists('role', $data) && is_array($data['role'])) {
+            $this->model->roles()->sync($data['role']);
+        }
+        
         return $this->model;
     }
 
-    private function createUserImage($realFilePath, $width = 200, $height = 200)
+    private function createUserImage($image, $width = 200, $height = 200)
     {
-        $fileExtension = pathinfo($realFilePath, PATHINFO_EXTENSION);
-        $fileName = sha1($this->model->username) . '.' . $fileExtension;
-        $saveFilePath = config()->get('users.profile_pictures_path') . '/' . $fileName;
+        $fileName = sha1($this->model->username) . '.' . $image->guessExtension();
+        $saveFilePath = 'users' . DIRECTORY_SEPARATOR . config()->get('users.profile_pictures_path') 
+            . DIRECTORY_SEPARATOR . $fileName;
         
-        $image = Image::make($realFilePath)
+        Image::make($image)
                       ->resize($width, $height)
                       ->save($saveFilePath);
-        $image->destroy();
 
-        return $saveFilePath;
-    }
-
-    public function destroyUserImage($model)
-    {
-        File::delete($model->profile_picture_uri);
-        $model->profile_picture_uri = null;
-        $model->save();
-    }
-
-    public function createWithGroups(array $data, array $groups)
-    {
-        $this->create($data);
-        // if ($this->model->roles->isEmpty()) {
-        //     $this->model->roles()->attach(array_column($groups, 'id'));
-        // }
-        // // $groups = array_map(function ($g) { return $g->toArray(); }, $groups);
-        // $groups = $this->modelsToArrays($groups);
-        // $this->model->groups()->sync(array_column($groups, 'id'), false);
-    }
-
-    public function updateWithGroups($model, array $data, array $groups)
-    {
-        if ($data['password']) {
-            $model->password = $data['password'];
-        }
-        // $groups = array_map(function ($g) { return $g->toArray(); }, $groups);
-        $groups = $this->modelsToArrays($groups);
-        $model->groups()->sync(array_column($groups, 'id'));
-        $this->update($model, $data)->update();
-    }
-    
-    private function modelsToArrays($models) {
-        return array_map(function ($m) { return $m->toArray(); }, $models);
+       return $saveFilePath;
     }
 
     public function destroy($model)
@@ -89,11 +60,37 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         return $model->delete();
     }
 
-    public function findByUsername($username)
+    public function destroyUserImage($model)
     {
-        return $this->model->byUsername($username)->first();
+        File::delete($model->profile_picture_uri);
+        $model->profile_picture_uri = null;
+        $model->save();
     }
 
+    /* TODO: refactor? - see: create method */
+    public function update($model, array $data)
+    {
+        if (array_key_exists('profile_picture', $data)) {
+            /* TODO: Delete old profile pic from the server? */
+            $model->profile_picture_uri = $this->createUserImage($data['profile_picture']);
+        }
+        
+        if ($data['password']) {
+            $model->password = $data['password'];
+        }
+
+        $model->update($data);
+        
+        if (array_key_exists('permission', $data) && is_array($data['permission'])) {
+            $this->model->permissions()->sync($data['permission']);
+        }
+        if (array_key_exists('role', $data) && is_array($data['role'])) {
+            $this->model->roles()->sync($data['role']);
+        }
+        
+        return $this->model;
+    }
+    
     public function updateAfterLogin()
     {
         ++$this->model->sign_in_count;
