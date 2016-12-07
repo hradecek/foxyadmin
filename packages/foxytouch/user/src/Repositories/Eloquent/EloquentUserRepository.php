@@ -82,10 +82,10 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         $model->update($data);
         
         if (array_key_exists('permission', $data) && is_array($data['permission'])) {
-            $this->model->permissions()->sync($data['permission']);
+            $model->permissions()->sync($data['permission']);
         }
         if (array_key_exists('role', $data) && is_array($data['role'])) {
-            $this->model->roles()->sync($data['role']);
+            $model->roles()->sync($data['role']);
         }
         
         return $this->model;
