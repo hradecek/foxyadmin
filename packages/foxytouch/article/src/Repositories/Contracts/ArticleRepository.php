@@ -8,8 +8,8 @@ use Foxytouch\Repositories\Contracts\BaseRepository;
  * Article repository contract.
  *
  * @see Foxytouch\Article\Models\Article
+ * @package Foxytouch\User\Repositories\Contracts
  * @author Ivo Hradek <ivohradek@gmail.com>
- * @package Foxytouch\User\Repositories
  */
 interface ArticleRepository extends BaseRepository
 {
