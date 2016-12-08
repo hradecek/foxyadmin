@@ -40,8 +40,10 @@ class CreateCategoryRequest extends FormRequest
      */
     public function rules()
     {
+        $categoryTable = config('articles.table.name.category', 'category');
+        
         return [
-            'name' => 'required|max:255|unique:category'
+            'name' => "required|max:255|unique:$categoryTable"
         ];
     }
 }
