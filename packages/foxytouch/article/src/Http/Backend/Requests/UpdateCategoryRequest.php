@@ -59,9 +59,10 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         $categoryId = $this->getCategoryIdFromRouteParameter();
+        $categoryTable = config('articles.table.name.category', 'category');
 
         return [
-            'name' => "required|max:255|unique:category,name,$categoryId",
+            'name' => "required|max:255|unique:$categoryTable,name,$categoryId",
         ];
     }
 
