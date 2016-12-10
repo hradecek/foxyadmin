@@ -42,12 +42,12 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     private function createUserImage($image, $width = 200, $height = 200)
     {
         $fileName = sha1($this->model->username) . '.' . $image->guessExtension();
-        $saveFilePath = 'users' . DIRECTORY_SEPARATOR . config()->get('users.profile_pictures_path') 
-            . DIRECTORY_SEPARATOR . $fileName;
+        $saveFilePath = 
+            'users' . DIRECTORY_SEPARATOR . 
+            config()->get('users.profile_pictures_path') . DIRECTORY_SEPARATOR .
+            $fileName;
         
-        Image::make($image)
-                      ->resize($width, $height)
-                      ->save($saveFilePath);
+        Image::make($image)->resize($width, $height)->save($saveFilePath);
 
        return $saveFilePath;
     }
