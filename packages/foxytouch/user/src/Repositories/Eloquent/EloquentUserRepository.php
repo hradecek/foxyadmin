@@ -88,7 +88,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
             $model->roles()->sync($data['role']);
         }
         
-        return $this->model;
+        return $model;
     }
     
     public function updateAfterLogin()
