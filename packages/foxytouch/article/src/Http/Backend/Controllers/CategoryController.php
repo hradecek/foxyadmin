@@ -8,9 +8,10 @@ use Foxytouch\Article\Repositories\Contracts\CategoryRepository;
 use Foxytouch\Article\Http\Backend\Requests\CreateCategoryRequest;
 use Foxytouch\Article\Http\Backend\Requests\UpdateCategoryRequest;
 
-use Illuminate\Support\Facades\Redirect;
-
 use Foxytouch\Http\Backend\Controllers\Controller;
+
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * Controller for {@link \Foxytouch\Article\Models\Category category}.
