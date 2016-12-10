@@ -32,7 +32,7 @@ class ArticleServiceProvider extends ServiceProvider
         
         Log::info('[ArticleServiceProvider] Booting');
 
-        $this->package(__DIR__, 'article');
+        $this->package(__DIR__, 'articles');
         $aliases = [
             'Form' => 'Collective\Html\FormFacade',
             'Html' => 'Collective\Html\HtmlFacade',
