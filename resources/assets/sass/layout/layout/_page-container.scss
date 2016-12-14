@@ -1,0 +1,18 @@
+.page-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  @include clearfix();
+
+  // .page-header-fixed & {
+  //   margin-top: $header-height;
+  // }
+}
+
+/* Page content */
+.page-content {
+  margin-top: 0px;
+  padding: 0px;
+  background-color: #FFFFFF;
+}
