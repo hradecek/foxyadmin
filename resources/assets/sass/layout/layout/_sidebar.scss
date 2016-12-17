@@ -69,3 +69,17 @@
     }
   }
 }
+
+@media (min-width: 992px) {
+  .page-sidebar {
+    float: left;
+    position: relative;
+    margin-right: -100%;
+    width: $sidebar-width;
+
+    &.collapse {
+      display: block;
+      max-height: none !important;
+    }
+  }
+}
