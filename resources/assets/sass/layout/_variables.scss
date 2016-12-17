@@ -1,12 +1,5 @@
-.page-header.navbar {
-  width: 100%;
-  padding: 0 20px 0 20px;
-  margin: 0;
-  border: 0px;
-  // padding: 0px;
-  box-shadow: none;
-  height: $header-height;
-  min-height: $header-height;
-  filter: none;
-  background-image: none;
-}
+$header-height: 46px !default;
+
+/* Sidebar variables */
+$sidebar-menu-link-font-size: 14px !default;
+$sidebar-menu-sub-menu-link-icon-font-size: 14px !default;

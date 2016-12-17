@@ -13,7 +13,9 @@ var del = require('del'),
     minifyCss = require('gulp-clean-css');
 
 // Global variables
-var pluginsDir = './public/global/plugins';
+var layoutDir = './public/layout',
+    themesDir = './public/global/themes',
+    pluginsDir = './public/global/plugins';
 
 // Bootstrap
 var bootstrap = {
@@ -21,7 +23,7 @@ var bootstrap = {
     dst: pluginsDir + '/bootstrap'
 };
 
-gulp.task('bootstrap', function() {
+gulp.task('bootstrap', function () {
     // Rename _bootstrap.scss to bootstrap.scss
     gulp.src(bootstrap.src + '/_bootstrap.scss')
         .pipe(rename(bootstrap.src + '/bootstrap.scss'))
@@ -42,7 +44,7 @@ var fontAwesome = {
     dst: pluginsDir + '/font-awesome'
 };
 
-gulp.task('font-awesome', function() {
+gulp.task('font-awesome', function () {
     // Compile & minify
     gulp.src(fontAwesome.src + '/font-awesome.scss')
         .pipe(sassc())
@@ -67,11 +69,64 @@ gulp.task('bootstrap-switch', function () {
         .pipe(gulp.dest(bootstrapSwitch.dst + '/css'));
 });
 
+// Layout
+var layout = {
+    src: './resources/assets/sass/layout',
+    dst: layoutDir
+};
+
+gulp.task('layout', function () {
+    gulp.src(layout.src + '/layout.scss')
+        .pipe(sassc())
+        .pipe(gulp.dest(layout.dst + '/css'))
+        .pipe(minifyCss())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(layout.dst + '/css'));
+});
+
+// Components
+var components = {
+    src: './resources/assets/sass/global',
+    dst: themesDir
+};
+
+gulp.task('components', function () {
+    gulp.src(components.src + '/components.scss')
+        .pipe(sassc())
+        .pipe(gulp.dest(components.dst + '/css'))
+        .pipe(minifyCss())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(components.dst + '/css'));
+});
+
+gulp.task('colors', function () {
+    gulp.src('./resources/assets/sass/themes/*.scss')
+        .pipe(sassc())
+        .pipe(gulp.dest(components.dst + '/css'))
+        .pipe(minifyCss())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(components.dst + '/css'));
+});
+
 // Build
-gulp.task('build', ['bootstrap-switch', 'bootstrap'], function () {
+gulp.task('build', [
+    'bootstrap',
+    'bootstrap-switch',
+    'layout',
+    'font-awesome',
+    'components',
+    'colors'
+    ], function () {}
+);
+
+// Watch
+gulp.task('watch', function () {
+    gulp.watch('./resources/assets/sass/**/*.scss', ['build']);
 });
 
 // Clean all generated files
-gulp.task('clean', function() {
-    del('./public/global')
+gulp.task('clean', function () {
+    del('./public/global');
+    del('./public/layout');
 });
+

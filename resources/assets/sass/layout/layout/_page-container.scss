@@ -3,7 +3,7 @@
   padding: 0;
   position: relative;
 
-  @include clearfix();
+  // @include clearfix();
 
   // .page-header-fixed & {
   //   margin-top: $header-height;
@@ -12,7 +12,24 @@
 
 /* Page content */
 .page-content {
-  margin-top: 0px;
-  padding: 0px;
+  margin-top: 0;
+  padding: 0;
   background-color: #FFFFFF;
+}
+.page-content-title {
+  padding: 0;
+  font-size: 28px;
+  letter-spacing: -1px;
+  display: block;
+  color: #666;
+  margin: 0 0 15px 0;
+  font-weight: 300;
+
+  /* subtitle */
+  small {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 300;
+    color: #888;
+  }
 }
