@@ -1,15 +1,18 @@
-<div class="page-sidebar navbar-collapse collapse in">
+<div class="page-sidebar">
   <ul class="sidebar-menu">
-    <li class="sidebar-item">
-      <a href="javascript:;" class="sidebar-link navbar-toggle">
+    <li class="heading">
+      <h3>__HEADING__</h3>
+    </li>
+    <li>
+      <a href="javascript:;">
         <i class="icon-diamond"></i>
-        <span class="sidebar-item-title">__ITEM__</span>
-        <span class="arrow open"></span>
+        <span class="title=">__TITLE__</span>
+        <span class="arrow"></span>
       </a>
-      <ul class="sidebar-sub-menu" style="display: block;">
-        <li class="sidebar-item">
-          <a href="__HREF__" class="nav-link">
-            <span class="sidebar-item-title">__ITEM__</span>
+      <ul class="sidebar-sub-menu">
+        <li>
+          <a href="__HREF__">
+            <span class="title">__ITEM__</span>
           </a>
         </li>
       </ul>

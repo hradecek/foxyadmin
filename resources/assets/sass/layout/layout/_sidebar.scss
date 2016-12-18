@@ -1,5 +1,5 @@
 /* Main Sidebar */
-.page-sidebar {
+.page-sidebar, .page-sidebar:hover {
   &.navbar-collapse {
     padding: 0;
     box-shadow: none;
@@ -15,17 +15,54 @@
       margin: 0;
       padding: 0;
       display: block;
+
+      > a {
+        display: block;
+        position: relative;
+        margin: 0;
+        border: 0;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: $sidebar-menu-link-font-size;
+        font-weight: 300;
+      }
+
+      &.heading {
+        padding: 15px;
+
+        > h3 {
+          margin: 0;
+          padding: 0;
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
+
+      &.heading + li > a {
+      }
     }
 
     li {
       > a {
+        display: block;
         position: relative;
+        margin: 0;
+        border: 0;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: $sidebar-menu-link-font-size;
+        font-weight: 300;
+
+        >[class="^icon-"] {
+          margin-left: 1px;
+          margin-right: 4px;
+        }
       }
     }
 
     .sidebar-sub-menu {
       padding: 0;
-      display: none;
+      // display: none;
       list-style: none;
       margin: 8px 0 8px 0;
 
@@ -68,6 +105,8 @@
       }
     }
   }
+
+
 }
 
 @media (min-width: 992px) {
