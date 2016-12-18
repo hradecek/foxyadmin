@@ -52,6 +52,9 @@ gulp.task('font-awesome', function () {
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(fontAwesome.dst + '/css'));
+    // Copy fonts
+    gulp.src('./node_modules/font-awesome/fonts/**/*')
+        .pipe(gulp.dest(fontAwesome.dst + '/fonts'));
 });
 
 // Bootstrap-switch
