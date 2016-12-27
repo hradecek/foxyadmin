@@ -9,6 +9,7 @@
   @include('backend.head')
 </head>
 <body>
+@include('backend.header')
 <div class="page-container">
   @include('backend.sidebar')
 
