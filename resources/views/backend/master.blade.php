@@ -6,27 +6,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8"/>
+  <title>@yield('title')</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   @include('backend.head')
 </head>
 <body>
-@include('backend.header')
-<div class="page-container">
-  @include('backend.sidebar')
-
-  <div class="page-content-wrapper">
-    <div class="page-content">
-      <h1 class="page-content-title">
-        Sample Text <small>sample text</small>
-      </h1>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">Sample</div>
-          <div class="row">Row</div>
-          <div class="row">Content</div>
-        </div>
+  <div class="page-header navbar">
+    @include('backend.header')
+  </div>
+  <div class="page-container">
+    <div class="page-sidebar">
+      @include('backend.sidebar')
+    </div>
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        @yield('content')
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>

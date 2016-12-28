@@ -1,0 +1,29 @@
+// Main settings
+$brand-main-color:                                               		lighten(#32c5d2, 1%) !default;
+$brand-main-font-color:													#ffffff !default;
+
+// Body and header
+$bg-color:                                                      		#222222 !default;
+$header-bg-color:                                               		#000000 !default;
+
+// Page content
+$general-panel-bg-color: #F1F4F7 !default;
+$page-content-solid-bg-color: darken($general-panel-bg-color, 1%) !default;
+
+// Sidebar menu
+$sidebar-menu-link-font-color: #EC6800 !default;
+$sidebar-menu-link-icon-font-color: #606C7D !default;
+$sidebar-menu-link-icon-font-color-on-hover: $sidebar-menu-link-icon-font-color !default;
+$sidebar-menu-divider-border-color: lighten($bg-color, 5%) !default;
+$sidebar-menu-link-icon-font-color: #8EB8DE !default;
+$sidebar-menu-link-bg-color-on-hover: #2C3542 !default;
+$sidebar-menu-link-bg-color-on-active: #E87E04;
+$sidebar-menu-link-font-color: #C9DFF5 !default;
+$sidebar-menu-link-font-color-on-active: #FFFFFF !default;
+$sidebar-menu-sub-menu-link-font-color: #EC6800 !default;
+$sidebar-menu-arrow-color: $sidebar-menu-link-icon-font-color !default;
+$sidebar-menu-sub-menu-link-icon-font-color: $sidebar-menu-arrow-color !default;
+$sidebar-menu-sub-menu-link-bg-color-on-hover: lighten($bg-color, 4%) !default;
+$sidebar-menu-link-font-color-on-hover: $sidebar-menu-link-font-color !default;
+$header-top-menu-bg-hover-color: #EC6800 !default;
+@import '_base';

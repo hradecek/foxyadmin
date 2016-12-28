@@ -25,6 +25,22 @@
         text-decoration: none;
         font-size: $sidebar-menu-link-font-size;
         font-weight: 300;
+
+        > i {
+          font-size: $sidebar-menu-link-icon-font-size;
+          margin-right: 5px;
+          text-shadow: none;
+        }
+
+        > i.glyphicon {
+          margin-left: 1px;
+          margin-right: 4px;
+        }
+
+        > [class^="icon-"] {
+          margin-left: 1px;
+          margin-right: 4px;
+        }
       }
 
       &.heading {
@@ -105,8 +121,6 @@
       }
     }
   }
-
-
 }
 
 @media (min-width: 992px) {

@@ -1,0 +1,83 @@
+.page-header.navbar {
+  background-color: $header-bg-color;
+
+  .page-header-top-menu {
+    .navbar-nav {
+      > li.dropdown {
+        .dropdown-toggle {
+          &:hover {
+            background-color: $header-top-menu-bg-hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-sidebar, .page-sidebar:hover {
+  background-color: $bg-color;
+
+  .sidebar-menu {
+    > li {
+      > a {
+        border-top: 1px solid $sidebar-menu-divider-border-color;
+        color:$sidebar-menu-link-font-color;
+
+        > i {
+          color: $sidebar-menu-link-icon-font-color;
+        }
+      }
+
+      &:hover {
+        > a {
+          background: $sidebar-menu-link-bg-color-on-hover;
+          color: $sidebar-menu-link-font-color;
+
+          > i {
+            color: $sidebar-menu-link-icon-font-color-on-hover;
+          }
+        }
+      }
+
+      &.active {
+        > a {
+          background: $sidebar-menu-link-bg-color-on-active;
+          border-top-color: transparent;
+          color: $sidebar-menu-link-font-color-on-active;
+
+          &:hover {
+            background: $sidebar-menu-link-bg-color-on-active;
+          }
+        }
+
+        &.hover {
+          > a {
+            background: $sidebar-menu-link-bg-color-on-hover;
+          }
+        }
+      }
+    }
+
+    .sidebar-sub-menu {
+      > li {
+        > a {
+          color: $sidebar-menu-sub-menu-link-font-color;
+
+          > i {
+            color: $sidebar-menu-sub-menu-link-icon-font-color;
+          }
+        }
+
+        &:hover,&.open,&.active {
+          > a {
+            background: $sidebar-menu-sub-menu-link-bg-color-on-hover !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  background-color: $bg-color;
+}
