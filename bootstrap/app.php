@@ -32,6 +32,11 @@ $app->singleton(
 );
 
 $app->singleton(
+    Illuminate\Contracts\Console\Kernel::class,
+    Foxytouch\Console\Kernel::class
+);
+
+$app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     Foxytouch\Exceptions\Handler::class
 );
