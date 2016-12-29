@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         Log::info('[RouteServiceProvider] Registering main routes.');
-        require app_path('Http/Frontend/routes.php');
+        // require app_path('Http/Frontend/routes.php');
     }
     
     public function register()
