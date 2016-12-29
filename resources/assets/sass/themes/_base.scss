@@ -78,6 +78,13 @@
   }
 }
 
+.page-footer {
+  background-color: $page-footer-bg-color;
+
+  .page-footer-copyright {
+    border-top: 1px solid $page-footer-border-color;
+  }
+}
 body {
   background-color: $bg-color;
 }
