@@ -26,5 +26,8 @@
       </div>
     </div>
   </div>
+  <div class="page-footer">
+    @include('backend.footer')
+  </div>
 </body>
 </html>
