@@ -67,7 +67,7 @@
     font-size: $sidebar-toggler-font-size;
     height: $header-height;
     position: relative;
-    width: $sidebar-collapsed-width;
+    width: $sidebar-width-collapsed;
 
     &:hover {
       .sidebar-toggle-handler {
