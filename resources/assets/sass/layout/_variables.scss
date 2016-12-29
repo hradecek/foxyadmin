@@ -1,19 +1,25 @@
-$header-height: 46px !default;
+/* Header */
+$header-height:                             46px !default;
+$header-top-menu-user-font-size:            13px !default;
+$header-top-menu-user-font-weight:          300 !default;
+$header-top-menu-user-item-padding:         14px 6px 12px 8px !default;
+
+/* Sidebar menu */
+$sidebar-width:                             235px !default;
+$sidebar-width-collapsed:                   50px !default;
+
+$sidebar-logo-height:                       56px !default;
+$sidebar-logo-container-width:              $sidebar-width !default;
+
+$sidebar-menu-link-font-size:               14px !default;
+$sidebar-menu-link-icon-font-size:          16px !default;
+
+$sidebar-toggler-font-size:                 22px !default;
+
+$sidebar-menu-sub-menu-link-icon-font-size: 14px !default;
 
 /* Page content */
-$page-content-min-height: 600px !default;
+$page-content-min-height:                   600px !default;
 
-
-/* Sidebar variables */
-$sidebar-width: 235px !default;
-$sidebar-menu-link-font-size: 14px !default;
-$sidebar-logo-container-width: $sidebar-width !default;
-$sidebar-logo-height: 56px !default;
-$sidebar-menu-sub-menu-link-icon-font-size: 14px !default;
-$sidebar-logo-container-width: 10px !default;
-$sidebar-toggler-font-size: 22px !default;
-$sidebar-collapsed-width: 50px !default;
-$header-top-menu-user-item-padding: 14px 6px 12px 8px !default;
-$header-top-menu-user-font-size: 13px !default;
-$header-top-menu-user-font-weight: 300 !default;
-$sidebar-menu-link-icon-font-size: 16px !default;
+/* Footer */
+$page-footer-height:                        33px !default;
