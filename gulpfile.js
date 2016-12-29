@@ -111,6 +111,17 @@ gulp.task('colors', function () {
         .pipe(gulp.dest(components.dst + '/css'));
 });
 
+// JQuery
+var jquery = {
+    src: './node_modules/jquery/dist',
+    dst: pluginsDir + '/jquery'
+};
+
+gulp.task('jquery', function () {
+    gulp.src(jquery.src + '/jquery.min.js')
+        .pipe(gulp.dest(jquery.dst));
+});
+
 // Build
 gulp.task('build', [
     'bootstrap',
@@ -118,7 +129,8 @@ gulp.task('build', [
     'layout',
     'font-awesome',
     'components',
-    'colors'
+    'colors',
+    'jquery'
     ], function () {}
 );
 

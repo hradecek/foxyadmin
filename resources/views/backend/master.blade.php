@@ -29,5 +29,6 @@
   <div class="page-footer">
     @include('backend.footer')
   </div>
+  @include('backend.scripts')
 </body>
 </html>
