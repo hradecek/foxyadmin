@@ -1,10 +1,10 @@
 .page-footer {
-  font-size: $page-footer-font-size;
-  height: $page-footer-height;
-  position: fixed;
+  left: $sidebar-width;
   right: 0;
   bottom: 0;
-  left: $sidebar-width;
+  height: $page-footer-height;
+  position: fixed;
+  font-size: $page-footer-font-size;
   padding-left: 20px;
   padding-right: 20px;
 
