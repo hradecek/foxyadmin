@@ -1,14 +1,14 @@
 .page-footer {
-  padding: 8px 20px 5px 20px;
-  font-size: 13px;
+  font-size: $page-footer-font-size;
   height: $page-footer-height;
   position: fixed;
-  left: $sidebar-width;
   right: 0;
   bottom: 0;
+  left: $sidebar-width;
+  padding-left: 20px;
+  padding-right: 20px;
 
   .page-footer-copyright {
-    border-top: 1px solid #ff0000;
-    padding: 20px;
+    padding: 10px 0;
   }
 }
