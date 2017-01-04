@@ -9,6 +9,7 @@ var del = require('del'),
     gulp = require('gulp'),
     sassc = require('gulp-sass'),
     rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
     prettify = require('gulp-prettify'),
     minifyCss = require('gulp-clean-css');
 
@@ -36,6 +37,10 @@ gulp.task('bootstrap', function () {
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(bootstrap.dst + '/css'));
+
+    // Copy JS
+    gulp.src('./node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js')
+        .pipe(gulp.dest(bootstrap.dst + '/js'));
 });
 
 // Font-awesome
@@ -70,6 +75,32 @@ gulp.task('bootstrap-switch', function () {
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(bootstrapSwitch.dst + '/css'));
+});
+
+// Bootstrap Wizard
+var bootstrapWizard = {
+    src: './node_modules/twitter-bootstrap-wizard',
+    dst: pluginsDir + '/bootstrap-wizard'
+};
+
+gulp.task('bootstrap-wizard', function () {
+    gulp.src(bootstrapWizard.src + '/jquery.bootstrap.wizard.min.js')
+        .pipe(gulp.dest(bootstrapWizard.dst));
+});
+
+// Plugins
+var plugins = {
+    src: './resources/assets/sass/global',
+    dst: pluginsDir
+};
+
+gulp.task('plugins', function () {
+    gulp.src(plugins.src + '/plugins.scss')
+        .pipe(sassc())
+        .pipe(gulp.dest(plugins.dst))
+        .pipe(minifyCss())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(plugins.dst));
 });
 
 // Layout
@@ -116,10 +147,20 @@ var jquery = {
     src: './node_modules/jquery/dist',
     dst: pluginsDir + '/jquery'
 };
+var jqueryValidation = {
+    src: './node_modules/jquery-validation',
+    dst: pluginsDir + '/jquery-validation'
+};
 
 gulp.task('jquery', function () {
     gulp.src(jquery.src + '/jquery.min.js')
         .pipe(gulp.dest(jquery.dst));
+    gulp.src(jqueryValidation.src + '/dist/jquery.validate.min.js')
+        .pipe(gulp.dest(jqueryValidation.dst));
+    gulp.src(jqueryValidation.src + '/dist/additional-methods.js')
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(jqueryValidation.dst));
 });
 
 // Build
@@ -130,7 +171,9 @@ gulp.task('build', [
     'font-awesome',
     'components',
     'colors',
-    'jquery'
+    'jquery',
+    'bootstrap-wizard',
+    'plugins'
     ], function () {}
 );
 

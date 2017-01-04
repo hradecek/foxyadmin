@@ -1,5 +1,7 @@
 /* Main Sidebar */
 .page-sidebar, .page-sidebar:hover {
+  height: 100%;
+
   &.navbar-collapse {
     padding: 0;
     box-shadow: none;
@@ -69,7 +71,7 @@
         font-size: $sidebar-menu-link-font-size;
         font-weight: 300;
 
-        >[class="^icon-"] {
+        > [class="^icon-"] {
           margin-left: 1px;
           margin-right: 4px;
         }
@@ -82,11 +84,34 @@
       list-style: none;
       margin: 8px 0 8px 0;
 
+      &:after {
+        border-left: 1px solid darkorange;
+        bottom: 0;
+        content: "";
+        left: 27px;
+        position: absolute;
+        top: 0;
+      }
+
       li {
         margin: 0;
         padding: 0;
         background: none;
         margin-top: 1px !important;
+
+        &:before {
+          background: darkorange;
+          bottom: auto;
+          content: "";
+          height: 8px;
+          left: 23px;
+          margin-top: 10px;
+          position: absolute;
+          right: auto;
+          width: 8px;
+          z-index: 1;
+          border-radius: 50%;
+        }
 
         > a {
           margin: 0;

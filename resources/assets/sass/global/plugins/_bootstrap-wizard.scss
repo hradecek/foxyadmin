@@ -1,0 +1,85 @@
+.form-wizard {
+
+  .progress {
+    margin-bottom: 30px;
+  }
+
+  .steps {
+    background: #FFFFFF none;
+    border: 0;
+    box-shadow: none;
+    filter: none;
+    margin-bottom: 15px;
+    padding: 10px 0;
+
+    > li {
+      > a.step {
+        background: #FFFFFF none;
+        filter: none;
+        border: 0;
+        box-shadow: none;
+
+        > .number {
+          background-color: #EEEEEE;
+          display: inline-block;
+          text-align: center !important;
+          font-size: 16px;
+          font-weight: 300;
+          padding: 11px 15px 13px 15px;
+          margin-right: 10px;
+          height: 45px;
+          width: 45px;
+          border-radius: 50% !important;
+          -moz-border-radius: 50% !important;
+          -webkit-border-radius: 50% !important;
+        }
+
+        > .desc {
+          display: inline-block;
+          font-size: 16px;
+          font-weight: 300;
+        }
+      }
+
+      &.active {
+        > a.step {
+          .number {
+            background-color: $brand-success;
+            color: #FFFFFF;
+          }
+
+          .desc {
+            color: #333333;
+          }
+        }
+      }
+
+      &.done {
+        > a.step {
+          .number {
+            background-color: $brand-warning;
+            color: #FFFFFF;
+          }
+
+          .desc {
+            color: #333333;
+          }
+          
+          i {
+            font-size: 12px;
+            font-weight: normal;
+            color: #999999;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .form-wizard .step .desc {
+    margin-top: 10px;
+    display: block;
+  }
+}

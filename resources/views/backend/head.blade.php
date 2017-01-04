@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/bootstrap/css/bootstrap.min.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/plugins.css') }}"/>
 <!-- Layout styles -->
 <link rel="stylesheet" type="text/css" href="{{ asset('layout/css/layout.css') }}"/>
 <!-- Theme styles -->
