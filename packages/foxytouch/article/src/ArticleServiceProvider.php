@@ -4,16 +4,20 @@ namespace Foxytouch\Article;
 
 use Foxytouch\Article\Http\Backend\Controllers\ArticleController;
 use Foxytouch\Article\Http\Backend\Controllers\CategoryController;
+
 use Foxytouch\Article\Models\Article;
 use Foxytouch\Article\Models\ArticleStatus;
 use Foxytouch\Article\Models\Category;
+
 use Foxytouch\Article\Repositories\Contracts\ArticleRepository;
 use Foxytouch\Article\Repositories\Contracts\ArticleStatusRepository;
 use Foxytouch\Article\Repositories\Contracts\CategoryRepository;
 use Foxytouch\Article\Repositories\Eloquent\EloquentArticleRepository;
 use Foxytouch\Article\Repositories\Eloquent\EloquentArticleStatusRepository;
 use Foxytouch\Article\Repositories\Eloquent\EloquentCategoryRepository;
+
 use Foxytouch\Providers\PackageServiceProvider as ServiceProvider;
+
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -29,7 +33,7 @@ class ArticleServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        
+
         Log::info('[ArticleServiceProvider] Booting');
 
         $this->package(__DIR__, 'articles');
@@ -71,11 +75,10 @@ class ArticleServiceProvider extends ServiceProvider
         ];
         $this->makeClasses($classes);
     }
-    
+
     private function loadRoutes()
     {
         require_once __DIR__ . '/Http/Backend/routes.php';
-        require_once __DIR__ . '/Http/Frontend/routes.php';
     }
 }
 
