@@ -19,9 +19,6 @@
         "phpdocumentor/phpdocumentor": "2.*"
     },
     "autoload": {
-        "classmap": [
-            "database"
-        ],
         "psr-4": {
             "Foxytouch\\": "foxyadmin/"
         },
