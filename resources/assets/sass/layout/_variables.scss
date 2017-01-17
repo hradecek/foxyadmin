@@ -8,7 +8,7 @@ $header-top-menu-user-item-padding:         14px 6px 12px 8px !default;
 $sidebar-width:                             235px !default;
 $sidebar-width-collapsed:                   50px !default;
 
-$sidebar-logo-height:                       56px !default;
+$sidebar-logo-height:                       $header-height !default;
 $sidebar-logo-container-width:              $sidebar-width !default;
 
 $sidebar-menu-link-font-size:               14px !default;
