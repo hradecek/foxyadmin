@@ -8,11 +8,7 @@ use Foxytouch\Page\Http\Backend\Requests\UpdatePageRequest;
 
 use Foxytouch\Http\Backend\Controllers\Controller;
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-
-use Intervention\Image\Facades\Image;
 
 /**
  * Controller for {@link \Foxytouch\Page\Models\Page page}.

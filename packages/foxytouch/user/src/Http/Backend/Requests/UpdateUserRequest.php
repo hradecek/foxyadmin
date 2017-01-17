@@ -4,7 +4,6 @@ namespace Foxytouch\User\Http\Backend\Requests;
 
 use Foxytouch\User\Repositories\Contracts\UserRepository;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

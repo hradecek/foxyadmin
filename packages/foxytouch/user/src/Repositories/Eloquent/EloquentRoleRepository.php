@@ -5,8 +5,6 @@ namespace Foxytouch\User\Repositories\Eloquent;
 use Foxytouch\User\Repositories\Contracts\RoleRepository;
 use Foxytouch\Repositories\Eloquent\EloquentBaseRepository;
 
-use Illuminate\Database\Eloquent\Collection;
-
 /**
  * Eloquent implementation of Role Repository.
  *

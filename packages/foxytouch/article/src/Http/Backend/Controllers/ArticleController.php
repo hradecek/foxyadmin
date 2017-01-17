@@ -9,13 +9,7 @@ use Foxytouch\Article\Http\Backend\Requests\UpdateArticleRequest;
 use Foxytouch\Article\Http\Backend\Requests\CreateArticleRequest;
 use Foxytouch\Article\Repositories\Contracts\ArticleStatusRepository;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-
-use Intervention\Image\Facades\Image;
-
 
 /**
  * Controller for {@link \Foxytouch\Article\Models\Article article}.

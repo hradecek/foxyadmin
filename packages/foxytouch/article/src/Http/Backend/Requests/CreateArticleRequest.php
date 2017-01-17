@@ -2,7 +2,6 @@
 
 namespace Foxytouch\Article\Http\Backend\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

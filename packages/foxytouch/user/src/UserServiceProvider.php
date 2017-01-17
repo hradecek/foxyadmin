@@ -20,7 +20,6 @@ use Foxytouch\User\Repositories\Eloquent\EloquentPermissionRepository;
 use Foxytouch\Providers\PackageServiceProvider as ServiceProvider;
 
 use Illuminate\Support\Facades\Log;
-use Illuminate\Foundation\AliasLoader;
 
 /**
  * User Service Provider.
