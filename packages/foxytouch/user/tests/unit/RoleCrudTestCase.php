@@ -37,9 +37,10 @@ class RoleCrudTestCase extends TestCase
     }
 
     /**
-     * Given
-     * When
-     * then.
+     * Given role does not exists.
+     * When request for creating is made 
+     *      and role has not attached any permissions,
+     * then role is created successfully.
      */
     public function testCreateValidRoleWithoutAttachedPermissions()
     {
@@ -52,9 +53,10 @@ class RoleCrudTestCase extends TestCase
     }
     
     /**
-     * Given
-     * When
-     * then.
+     * Given role does not exists.
+     * When request for creation is made
+     *      and role has attached one or more permissions,
+     * then role is created successfully.
      */
     public function testCreateValidRoleWithAttachedPermissions()
     {
@@ -65,9 +67,10 @@ class RoleCrudTestCase extends TestCase
     }
 
     /**
-     * Given
-     * When
-     * then.
+     * Given role does exists.
+     * When request for update is made,
+     *      such that one or more permissions are removed,
+     * then permissions are detached from role.
      */
     public function testUpdateRole()
     {
@@ -96,9 +99,10 @@ class RoleCrudTestCase extends TestCase
     }
 
     /**
-     * Given
-     * When
-     * then.
+     * Given role exists.
+     * When request for removing is made
+     *      and role has not attached any permissions,
+     * then role is removed.
      */
     public function testDestroyValidRoleWithoutPermission()
     {
@@ -111,9 +115,10 @@ class RoleCrudTestCase extends TestCase
     }
 
     /**
-     * Given
-     * When
-     * then.
+     * Given role exists.
+     * When request for removing is made
+     *      and role has attached one or more permissions,
+     * then role is removed.
      */
     public function testDestroyValidRoleWithPermissions()
     {
