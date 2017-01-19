@@ -13,9 +13,12 @@
          syntaxCheck="false"
          verbose="false">
     <testsuites>
-        <testsuite name="Test Suite">
-            <directory suffix="TestCase.php">./packages/foxytouch/*/tests/</directory>
+        <testsuite name="User Module Test Suite">
+            <directory suffix="TestCase.php">./packages/foxytouch/user/tests/</directory>
         </testsuite>
+        <!-- testsuite name="Article Module Test Suite">
+            <directory suffix="TestCase.php">./packages/foxytouch/article/tests/</directory>
+        </testsuite -->
     </testsuites>
     <filter>
         <whitelist>
