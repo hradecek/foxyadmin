@@ -26,10 +26,10 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     {
         $model->update($data);
         $this->sync($model, $data);
-        
+
         return $model;
     }
-    
+
     private function sync($model, array $data)
     {
         if (array_key_exists('permission', $data) && is_array($data['permission'])) {

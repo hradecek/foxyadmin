@@ -28,25 +28,25 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         $this->model->password = $data['password'];
         $this->model->fill($data);
         $this->model->save();
-        
+
         if (array_key_exists('permission', $data) && is_array($data['permission'])) {
             $this->model->permissions()->sync($data['permission']);
         }
         if (array_key_exists('role', $data) && is_array($data['role'])) {
             $this->model->roles()->sync($data['role']);
         }
-        
+
         return $this->model;
     }
 
     private function createUserImage($image, $width = 200, $height = 200)
     {
         $fileName = sha1($this->model->username) . '.' . $image->guessExtension();
-        $saveFilePath = 
-            'users' . DIRECTORY_SEPARATOR . 
+        $saveFilePath =
+            'users' . DIRECTORY_SEPARATOR .
             config()->get('users.profile_pictures_path') . DIRECTORY_SEPARATOR .
             $fileName;
-        
+
         Image::make($image)->resize($width, $height)->save($saveFilePath);
 
        return $saveFilePath;
@@ -74,23 +74,23 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
             /* TODO: Delete old profile pic from the server? */
             $model->profile_picture_uri = $this->createUserImage($data['profile_picture']);
         }
-        
+
         if ($data['password']) {
             $model->password = $data['password'];
         }
 
         $model->update($data);
-        
+
         if (array_key_exists('permission', $data) && is_array($data['permission'])) {
             $model->permissions()->sync($data['permission']);
         }
         if (array_key_exists('role', $data) && is_array($data['role'])) {
             $model->roles()->sync($data['role']);
         }
-        
+
         return $model;
     }
-    
+
     public function updateAfterLogin()
     {
         ++$this->model->sign_in_count;

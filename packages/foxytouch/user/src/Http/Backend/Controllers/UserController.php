@@ -133,10 +133,10 @@ class UserController extends Controller
         $map = function ($i) { return $i['name']; };
         $roles = $this->role->all(['id', 'name'])->keyBy('id')->map($map)->toArray();
         $permissions = $this->permission->all(['id', 'name'])->keyBy('id')->map($map)->toArray();
-        
+
         /* TODO: Not found? */
         $user = $this->user->findBy('username', $username);
-        
+
         return view('users::backend.users.edit', compact('roles', 'permissions', 'user'));
     }
 
@@ -152,12 +152,12 @@ class UserController extends Controller
     {
         $user = $this->user->findBy('username', $username);
         $this->user->update($user, $request->all());
-        
+
         Log::info("User: $user->id has been updated.");
         return Redirect::route('auth.user.index')
                        ->with('success', trans('general.success_update'));
     }
-    
+
     /**
      * <p>
      * Delete specific {@link \Foxytouch\User\Models\User user}.
@@ -173,19 +173,19 @@ class UserController extends Controller
      */
     public function destroy($username)
     {
-        /* TODO: Super-user hidden 
+        /* TODO: Super-user hidden.
          * You should not been able to remove all users.
          */
         $user = $this->user->findBy('username', $username);
         $username = $user->username;
-        
+
         $this->user->destroy($user);
 
         Log::info("User: $username has been removed");
         return Redirect::route('auth.user.index')
                        ->with('success', trans('general.success_delete'));
     }
-    
+
     /**
      * Group
      *
@@ -210,7 +210,7 @@ class UserController extends Controller
         foreach ($permissions as $permission) {
             $id = $permission->id;
             $allows = ($userPermissions) ? $userPermissions->find($id)->pivot->allow : 0b0000;
-            $denies = ($userPermissions) ? $userPermissions->find($id)->pivot->deny : 0b0000; 
+            $denies = ($userPermissions) ? $userPermissions->find($id)->pivot->deny : 0b0000;
             if ($groups) {
                 foreach ($groups as $group) {
                     if ($group->permissions->find($id)) {

@@ -14,7 +14,7 @@ interface UserRepository extends BaseRepository
 {
     /**
      * Called after successful <b>login</b>.
-     * 
+     *
      * Following actions will be performed:
      * <ul>
      *   <li>login count will be increment by 1,</li>
@@ -27,7 +27,7 @@ interface UserRepository extends BaseRepository
 
     /**
      * Called after successful <b>logout</b>.
-     * 
+     *
      * Following actions will be performed:
      * <ul>
      *   <li>login flag will be set to false.</li>

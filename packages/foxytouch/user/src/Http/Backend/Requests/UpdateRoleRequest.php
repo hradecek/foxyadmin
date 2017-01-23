@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * TODO:
- * 
+ *
  * @package \Foxytouch\User\Http\Backend\Requests
  * @author Ivo Hradek <ivohradek@gmail.com>
  */

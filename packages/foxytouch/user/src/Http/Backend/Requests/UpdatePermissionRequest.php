@@ -6,7 +6,7 @@ use Foxytouch\User\Repositories\Contracts\PermissionRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * 
+ *
  * @package \Foxytouch\User\Http\Backend\Requests
  * @author Ivo Hradek <ivohradek@gmail.com>
  */

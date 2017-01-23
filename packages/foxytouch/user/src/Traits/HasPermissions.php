@@ -6,7 +6,7 @@ use Foxytouch\User\Models\Permission;
 
 /**
  * Trait for Permission.
- * 
+ *
  * @package \Foxytouch\User\Traits
  * @author Ivo Hradek <ivohradek@gmail.com>
  */

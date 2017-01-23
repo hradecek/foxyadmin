@@ -34,9 +34,9 @@ class UserServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        
+
         Log::info('[UserServiceProvider] Booting');
-        
+
         $this->package(__DIR__, 'users');
         $aliases = [
             'Form' => 'Collective\Html\FormFacade',
@@ -65,15 +65,15 @@ class UserServiceProvider extends ServiceProvider
         $this->app->bind(PermissionRepository::class, function() {
             return new EloquentPermissionRepository(new Permission);
         });
-        
+
         Log::info('[UserServiceProvider] Setting up routes');
         include __DIR__ . '/Http/Backend/routes.php';
-        
+
         $classes = [
-            Role::class, 
-            User::class, 
+            Role::class,
+            User::class,
             Permission::class,
-            AuthController::class, 
+            AuthController::class,
             UserController::class,
             PermissionController::class
         ];
