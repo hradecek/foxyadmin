@@ -13,12 +13,10 @@
     "gulp-prettify": "^0.3.0",
     "gulp-clean-css": "~2.2.1",
     "jquery": "~3.1.1",
+    "jquery-validation": "~1.16.0",
     "font-awesome": "~4.7.0",
     "bootstrap-sass": "~3.3.7",
     "bootstrap-switch": "~3.3.2",
     "twitter-bootstrap-wizard": "~1.2.0"
-  },
-  "dependencies": {
-    "jquery-validation": "~1.16.0"
   }
 }
