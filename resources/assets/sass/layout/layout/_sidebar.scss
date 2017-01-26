@@ -87,7 +87,7 @@
       &:after {
         border-left: 1px solid darkorange;
         bottom: 0;
-        content: "";
+        // content: "";
         left: 27px;
         position: absolute;
         top: 41px; // Height of parent menu
@@ -103,7 +103,7 @@
         &:before {
           background: darkorange;
           bottom: auto;
-          content: "";
+          // content: "";
           height: 8px;
           left: 23px;
           margin-top: 10px;
@@ -187,6 +187,71 @@
               display: none !important;
             }
           }
+
+          &.heading {
+            > h3 {
+              display: none;
+            }
+          }
+
+          &:hover {
+            width: ($sidebar-collapsed-submenu-width-on-hover + $sidebar-width-collapsed + 1px) !important;
+            position: relative !important;
+            z-index: $zindex-sidebar-fixed;
+            display: block !important;
+
+            > a {
+              > i {
+                margin-right: 10px;
+              }
+
+              > .title {
+                display: inline !important;
+                padding-left: 15px;
+              }
+
+              > .selected {
+                display: none;
+              }
+            }
+
+            &.heading {
+              widows: $sidebar-width-collapsed !important;
+              box-shadow: none;
+            }
+
+            > .sidebar-sub-menu {
+              width: $sidebar-collapsed-submenu-width-on-hover;
+              position: absolute;
+              left: ($sidebar-width-collapsed + 1px);
+              margin-top: 0;
+              top: 100%;
+              z-index: $zindex-sidebar-submenu;
+              display: block !important;
+
+              > li {
+                > a {
+                  padding-left: 15px !important;
+                }
+
+                > .sidebar-sub-menu {
+                  > li {
+                    > a {
+                      padding-left: 30px !important;
+                    }
+
+                    > .sidebar-sub-menu {
+                      > li {
+                        > a {
+                          padding-left: 45px !important;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -195,14 +260,6 @@
       .page-sidebar {
         display: none !important;
       }
-    }
-  }
-
-  .page-sidebar-closed {
-    .page-sidebar {
-      width: $sidebar-width-collapsed !important;
-
-
     }
   }
 }

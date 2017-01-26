@@ -1,13 +1,10 @@
+/* Page Container */
 .page-container {
   margin: 0;
   padding: 0;
   position: relative;
 
   @include clearfix();
-
-  // .page-header-fixed & {
-  //   margin-top: $header-height;
-  // }
 }
 
 /* Page content */
@@ -16,6 +13,8 @@
   padding: 0;
   background-color: #FFFFFF;
 }
+
+/* Page Title */
 .page-content-title {
   padding: 0;
   font-size: 28px;
@@ -25,7 +24,7 @@
   margin: 0 0 15px 0;
   font-weight: 300;
 
-  /* subtitle */
+  /* Page Subtitle */
   small {
     font-size: 14px;
     letter-spacing: 0;
@@ -48,10 +47,6 @@
       .page-sidebar-closed & {
         margin-left: $sidebar-width-collapsed !important;
       }
-
-      /* .page-full-width & {
-        margin-left: 0px !important;
-      } */
     }
   }
 }
