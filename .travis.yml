@@ -1,5 +1,9 @@
 language: php
 
+addons:
+    code_climate:
+        repo_token: 4e7cd8a76f9a996c6e32b2b6f7bca1490f76a0d74b560ec377aeb02143dff2a0
+
 php:
     - 5.6
     - 7.0
@@ -14,3 +18,6 @@ install:
 before_script: git reset --hard HEAD
 
 script: vendor/bin/phpunit
+
+after_success:
+    - vendor/bin/test-reporter

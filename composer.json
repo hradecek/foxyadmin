@@ -16,7 +16,8 @@
         "mockery/mockery": "0.9.*",
         "fzaninotto/faker": "~1.4",
         "squizlabs/php_codesniffer": "*",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "phpdocumentor/phpdocumentor": "2.*",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-4": {
