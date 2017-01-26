@@ -17,8 +17,10 @@
     @include('backend.header')
   </div>
   <div class="page-container">
-    <div class="page-sidebar">
-      @include('backend.sidebar')
+    <div class="page-sidebar-wrapper">
+      <div class="page-sidebar navbar-collapse collapse">
+        @include('backend.sidebar')
+      </div>
     </div>
     <div class="page-content-wrapper">
       <div class="page-content">

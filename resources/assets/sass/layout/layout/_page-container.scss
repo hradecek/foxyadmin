@@ -3,7 +3,7 @@
   padding: 0;
   position: relative;
 
-  // @include clearfix();
+  @include clearfix();
 
   // .page-header-fixed & {
   //   margin-top: $header-height;
@@ -44,6 +44,14 @@
       margin-top: 0;
       min-height: $page-content-min-height;
       padding: 25px 20px 10px 20px;
+
+      .page-sidebar-closed & {
+        margin-left: $sidebar-width-collapsed !important;
+      }
+
+      /* .page-full-width & {
+        margin-left: 0px !important;
+      } */
     }
   }
 }

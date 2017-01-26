@@ -1,6 +1,6 @@
 /* Main Sidebar */
-.page-sidebar, .page-sidebar:hover {
-  height: 100%;
+.page-sidebar,
+.page-sidebar:hover {
 
   &.navbar-collapse {
     padding: 0;
@@ -93,6 +93,7 @@
         top: 41px; // Height of parent menu
       }
 
+
       li {
         margin: 0;
         padding: 0;
@@ -158,6 +159,50 @@
     &.collapse {
       display: block;
       max-height: none !important;
+    }
+  }
+
+  .page-sidebar-closed {
+    .page-sidebar {
+      width: $sidebar-width-collapsed !important;
+
+      .sidebar-menu.page-sidebar-menu-closed {
+        width: $sidebar-width-collapsed !important;
+
+        > li {
+          &.open > .sidebar-sub-menu,
+          > .sidebar-sub-menu {
+            display: none !important;
+          }
+
+          > a {
+            padding-left: 11px;
+
+            .selected {
+              right: -3px !important;
+            }
+
+            > .title,
+            > .arrow {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+
+    &.page-sidebar-hide {
+      .page-sidebar {
+        display: none !important;
+      }
+    }
+  }
+
+  .page-sidebar-closed {
+    .page-sidebar {
+      width: $sidebar-width-collapsed !important;
+
+
     }
   }
 }

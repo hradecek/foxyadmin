@@ -80,7 +80,7 @@ gulp.task('bootstrap-switch', function () {
 // Bootstrap Wizard
 var bootstrapWizard = {
     src: './node_modules/twitter-bootstrap-wizard',
-    dst: pluginsDir + '/bootstrap-wizard'
+    dst: pluginsDir + '/bootstrap-wizard/js'
 };
 
 gulp.task('bootstrap-wizard', function () {
@@ -145,11 +145,11 @@ gulp.task('colors', function () {
 // JQuery
 var jquery = {
     src: './node_modules/jquery/dist',
-    dst: pluginsDir + '/jquery'
+    dst: pluginsDir + '/jquery/js'
 };
 var jqueryValidation = {
     src: './node_modules/jquery-validation',
-    dst: pluginsDir + '/jquery-validation'
+    dst: pluginsDir + '/jquery-validation/js'
 };
 
 gulp.task('jquery', function () {
@@ -163,6 +163,15 @@ gulp.task('jquery', function () {
         .pipe(gulp.dest(jqueryValidation.dst));
 });
 
+// App scripts
+gulp.task('scripts', function () {
+    gulp.src('./resources/assets/scripts/*.js')
+        .pipe(gulp.dest('./public/scripts'))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./public/scripts'));
+});
+
 // Build
 gulp.task('build', [
     'bootstrap',
@@ -173,7 +182,8 @@ gulp.task('build', [
     'colors',
     'jquery',
     'bootstrap-wizard',
-    'plugins'
+    'plugins',
+    'scripts'
     ], function () {}
 );
 
@@ -187,4 +197,3 @@ gulp.task('clean', function () {
     del('./public/global');
     del('./public/layout');
 });
-
