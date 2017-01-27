@@ -3,6 +3,7 @@
     "description": "Very highly modular dynamic lightweight CMS",
     "keywords": ["foxyadmin", "cms", "modular"],
     "type": "parent",
+    "license": "MIT",
     "require": {
         "php": ">=5.6",
         "laravel/framework": "5.1.*",

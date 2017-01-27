@@ -7,7 +7,7 @@
 Version numbering is done in accordnace to [semantic versioning](http://semver.org/).
 
 ## License
-The FoxyAdmin content management system is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The FoxyAdmin content management system is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). See [LICENSE](https://github.com/hradecek/foxyadmin/blob/master/LICENSE) for details.
 
 ---
 Foxy Admin is maintained by [Foxytouch](https://www.foxytouch.com).
