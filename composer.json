@@ -4,7 +4,7 @@
     "keywords": ["foxyadmin", "cms", "modular"],
     "type": "parent",
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=5.6",
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
         "foxytouch/user": "~1.0.0"
