@@ -33,7 +33,7 @@ class CreateUserTable extends Migration
             $table->string('profile_picture_uri')
                   ->nullable();
 
-            $table->timestamps();
+            $table->nullableTimestamps();
             $table->rememberToken();
         });
     }
