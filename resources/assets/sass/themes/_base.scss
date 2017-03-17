@@ -5,6 +5,7 @@
     .navbar-nav {
       > li.dropdown {
         .dropdown-toggle {
+          color: $header-top-menu-fg-color;
           &:hover {
             background-color: $header-top-menu-bg-hover-color;
           }

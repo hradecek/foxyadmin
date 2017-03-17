@@ -16,7 +16,7 @@
 
     .navbar-nav {
       display: block;
-      margin-right: 20px;
+      margin-right: 5px;
       padding: 0;
 
       > li.dropdown {
@@ -53,11 +53,12 @@
 
     float: left;
     height: $header-height;
-    padding: 0 20px 0 20px;
+    padding: 0 0 0 15px;
     width: $sidebar-logo-container-width;
 
     .page-logo-default {
       height: $sidebar-logo-height;
+      padding: 3px 0 3px 0;
     }
 
     .page-sidebar-closed & {
