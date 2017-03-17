@@ -1,5 +1,28 @@
 var layout = function () {
     var body = $('body');
+
+    var resBreakpoint = app.getResponsiveBreakpoint('md');
+
+    var handleSidebarAndContentHeight = function () {
+        var height;
+        var content = $('.page-content');
+        var sidebar = $('.page-sidebar');
+        var headerHeight = $('.page-header').outerHeight();
+        var footerHeight = $('.page-footer').outerHeight();
+
+        if (app.getViewPort().width < resBreakpoint) {
+            height = app.getViewPort.height - headerHeight - footerHeight;
+        } else {
+            height = sidebar.height() + 20;
+        }
+
+        if ((height + headerHeight + footerHeight) <= app.getViewPort().height) {
+            height = app.getViewPort().height - headerHeight - footerHeight;
+        }
+        
+        content.attr('style', 'min-height: ' + height + 'px');
+        sidebar.attr('style', 'min-height: ' + (height + footerHeight) + 'px');
+    };
     
     var handleSidebarToggler = function () {
         if ($.cookie && $.cookie('sidebar_closed') === '1') {
@@ -38,7 +61,12 @@ var layout = function () {
             handleSidebarToggler();
         },
         
+        initContent: function () {
+            app.addResizeHandler(handleSidebarAndContentHeight);
+        },
+        
         init: function () {
+            this.initContent();
             this.initSidebar();
         }
     };
@@ -46,4 +74,5 @@ var layout = function () {
 
 $(function () {
     layout.init();
+    console.debug("After init");
 });

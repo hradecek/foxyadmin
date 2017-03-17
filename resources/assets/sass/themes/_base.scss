@@ -14,9 +14,13 @@
   }
 }
 
+.page-content {
+  background-color: $content-bg-color;
+}
+
 .page-sidebar,
 .page-sidebar:hover {
-  background-color: $bg-color;
+  background-color: $sidebar-bg-color;
 
   .sidebar-menu {
     > li {
@@ -103,6 +107,7 @@
 
 .page-footer {
   background-color: $page-footer-bg-color;
+  color: $page-footer-default-font-color;
 
   .page-footer-copyright {
     border-top: 1px solid $page-footer-border-color;

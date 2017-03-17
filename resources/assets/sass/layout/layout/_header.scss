@@ -59,6 +59,11 @@
     .page-logo-default {
       height: $sidebar-logo-height;
     }
+
+    .page-sidebar-closed & {
+      display: none;
+      padding: 0;
+    }
   }
 
   .sidebar-toggler {
@@ -70,6 +75,9 @@
     width: $sidebar-width-collapsed;
 
     &:hover {
+      filter: alpha(opacity=100);
+      opacity: 1;
+
       .sidebar-toggle-handler {
         &::before {
           -moz-transform: translate3d(0, -8px, 0);
@@ -81,6 +89,10 @@
           -webkit-transform: translate3d(0, 8px, 0);
           transform: translate3d(0, 8px, 0);
         }
+      }
+
+      .page-sidebar-closed & {
+        margin-right: ($sidebar-width-collapsed - $header-sidebar-toggler-width) / 2;
       }
     }
 

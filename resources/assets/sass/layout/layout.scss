@@ -7,3 +7,19 @@
 @import 'layout/_header';
 @import 'layout/_sidebar';
 @import 'layout/_page-container';
+
+/*
+TODO: MAYBE
+ * Page loader
+.page-on-load {
+  background: #FEFEFE;
+
+  .page-header,
+  .page-container,
+  .page-footer,
+  > .clearfix {
+    display: none;
+    transition: all 2s;
+  }
+}
+ */

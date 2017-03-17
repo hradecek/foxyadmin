@@ -77,6 +77,32 @@ var app = function () {
         
         addResizeHandler: function (handler) {
             resizeHandlers.push(handler);
+            _runResizeHandlers();
+        },
+        
+        getViewPort: function () {
+            var e = window,
+                a = 'inner';
+            if (!('innerWidth') in window) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+
+            return {
+                width: e[a + 'Width'],
+                height: e[a + 'Height']
+            };
+        },
+
+        getResponsiveBreakpoint: function (size) {
+            var sizes = {
+                'xs': 480,
+                'sm': 768,
+                'md': 992,
+                'lg': 1200
+            };
+
+            return sizes[size] ? sizes[size] : 0;
         }
     };
 } ();

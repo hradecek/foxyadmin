@@ -1,31 +1,49 @@
 /* General */
-$bg-color:                                      #222222 !default;
+$bg-color:                                      #424242 !default;
+
+/* Content */
+$content-bg-color:                              #363841 !default;
 
 /* Header */
-$header-bg-color:                               #000000 !default;
-$header-top-menu-bg-hover-color:                #EC6800 !default;
+$header-bg-color:                               #24262D !default;
+$header-top-menu-bg-hover-color:                #EC6800 !default; // Dark orange
 
 /* Sidebar menu */
-$sidebar-menu-link-font-color:                  #EC6800 !default;
-$sidebar-menu-link-font-color-on-hover:         $sidebar-menu-link-font-color !default;
-$sidebar-menu-link-font-color-on-active:        #FFFFFF !default;
+$sidebar-bg-color:                              #2A2D35 !default;
 
-$sidebar-menu-link-icon-font-color:             #606C7D !default;
+$sidebar-menu-link-font-color:                  #E0E0E0 !default;
+$sidebar-menu-link-font-color-on-hover:         $sidebar-menu-link-font-color !default;
+$sidebar-menu-link-font-color-on-active:        #CF5300 !default;
+
+$sidebar-menu-link-icon-font-color:             #9E9E9E !default;
 $sidebar-menu-link-icon-font-color-on-hover:    $sidebar-menu-link-icon-font-color !default;
 
-$sidebar-menu-link-bg-color-on-hover:           #2C3542 !default;
-$sidebar-menu-link-bg-color-on-active:          #E87E04;
+$sidebar-menu-link-bg-color-on-hover:           #FF6600 !default; // lighter orange
+$sidebar-menu-link-bg-color-on-active:          #E87E04; // ligh orange
 
 $sidebar-menu-arrow-color:                      $sidebar-menu-link-icon-font-color !default;
 $sidebar-menu-divider-border-color:             lighten($bg-color, 5%) !default;
 
-$sidebar-menu-sub-menu-link-font-color:         #EC6800 !default;
+$sidebar-menu-sub-menu-link-font-color:         #E0E0E0 !default;
 $sidebar-menu-sub-menu-link-icon-font-color:    $sidebar-menu-arrow-color !default;
-$sidebar-menu-sub-menu-link-bg-color-on-hover:  lighten($bg-color, 4%) !default;
+$sidebar-menu-sub-menu-link-bg-color-on-hover:  #FFA000 !default;
 
 /* Footer */
-$page-footer-bg-color:                          $bg-color !default;
+$page-footer-bg-color:                          #24262D !default;
 $page-footer-border-color:                      darken($page-footer-bg-color, 5%) !default;
+$page-footer-default-font-color:                lighten($bg-color, 40%) !default;
 
   /* Base */
 @import '_base';
+
+/*
+https://material.io/guidelines/style/color.html#color-color-palette
+ Orange
+  - #EC6800 dark
+  - #E87E04 Normal
+  - #FF9900 light
+ Grey
+  - #000000 dark
+  - #1E1E1E normal
+  - #2E2F2F light
+*/
