@@ -1,0 +1,17 @@
+label {
+  font-size: 14px;
+  font-weight: 300;
+  padding: 3px 6px 3px 6px;
+  color: #FFFFFF;
+  font-family: $font-family-primary;
+  text-shadow: none !important;
+
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 & {
+    font-size: 75%;
+  }
+}

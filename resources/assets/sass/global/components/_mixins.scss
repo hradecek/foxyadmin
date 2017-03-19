@@ -16,3 +16,52 @@
   -o-border-radius: $radius#{$important};
   border-radius: $radius#{$important};
 }
+
+@mixin placeholder($color: $input-color-placeholder) {
+  &::-moz-placeholder           { color: $color; opacity: 1; }
+  &:-ms-input-placeholder       { color: $color; }
+  &::-webkit-input-placeholder  { color: $color; }
+}
+
+@mixin opacity($value, $important: '') {
+  opacity: $value #{$important};
+  filter: alpha(opacity=#{$value * 100}) #{$important};
+}
+
+@mixin input-color($color) {
+
+  .form-control {
+    border-bottom: 1px solid $color;
+    outline: none !important;
+    box-shadow: none !important;
+
+    &.edited:not([readonly]),
+    &.form-control-static,
+    &:focus:not([readonly]),
+    &.focus:not([readonly]) {
+      ~ label,
+      ~ .form-control-focus {
+        &:after {
+          background: $color;
+        }
+      }
+
+      ~ label {
+        color: $color;
+      }
+
+      ~ i {
+        color: $color;
+      }
+
+      ~ .help-block {
+        color: $color;
+      }
+    }
+
+    label {
+      color: $color;
+    }
+  }
+}
+

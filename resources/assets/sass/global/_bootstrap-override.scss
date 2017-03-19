@@ -1,3 +1,30 @@
-$brand-success: lighten(#32c5d2, 1%);
-$brand-warning: #F1C40F;
-$brand-danger: lighten(#EB5D68, 3%);
+$brand-success:           lighten(#32C5D2, 1%);
+$brand-warning:           #F1C40F;
+$brand-danger:            lighten(#EB5D68, 3%);
+$brand-info:              lighten(#5893dd, 3%);
+
+$input-bg:                #494B54;
+$input-bg-disabled:       darken(#F1F4F7, 1%);
+// $input-color:             lighten(#000000, 33.5%);
+$input-color:             #949BA2;
+$input-border-color:      darken(#E1E5EC, 10%);
+$input-placeholder-color: #999;
+$input-label-font-size:   14px;
+$input-label-color:       #888888;
+$input-label-opacity:     1;
+
+$state-success-text:      darken($brand-success, 10%);
+$state-success-bg:        lighten($brand-success, 28%);
+$state-success-border:    lighten($brand-success, 28%);
+
+$state-info-text:         darken($brand-info, 12%);
+$state-info-bg:           lighten($brand-info, 29%);
+$state-info-border:       lighten($brand-info, 29%);
+
+$state-danger-text:       darken($brand-danger, 10%);
+$state-danger-bg:         lighten($brand-danger, 26%);
+$state-danger-border:     lighten($brand-danger, 26%);
+
+$state-warning-text:      darken($brand-warning, 10%);
+$state-warning-bg:        lighten($brand-warning, 27%);
+$state-warning-border:    lighten($brand-warning, 27%);
