@@ -9,10 +9,9 @@
   overflow: hidden;
   position: relative;
   user-select: none;
+  padding: 9px 14px 8px 14px;
 
   @extend .md-shadow-z-1;
-
-  padding: 9px 14px 8px 14px;
 
   &.btn-link {
     box-shadow: none;
@@ -27,6 +26,10 @@
   &:hover {
     transition: all .3s;
     @extend .md-shadow-z-2-hover;
+  }
+
+  &:active {
+    @extend .md-shadow-z-3-hover;
   }
 }
 

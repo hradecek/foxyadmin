@@ -66,10 +66,38 @@ var app = function () {
             });
         });
     };
-    
+
+    var handleMaterialDesignEffects = function () {
+        $('body').on('click', 'input.btn, button.btn', function (e) {
+            var element = $(this);
+
+            if (element.find('.click-circle').length == 0) {
+                element.prepend("<span class='click-circle'></span>");
+            }
+
+            var circle = element.find('.click-circle');
+            circle.removeClass('click-animate');
+
+            if (!circle.height() && !circle.width()) {
+                var d = Math.max(element.outerWidth(), element.outerHeight());
+                circle.css({height: d, width: d});
+            }
+
+            var x = e.pageX - element.offset().left - circle.width()/2;
+            var y = e.pageY - element.offset().top - circle.height()/2;
+
+            circle.css({top: y + 'px', left: x + 'px'}).addClass('click-animate');
+
+            setTimeout(function () {
+                circle.remove();
+            }, 1000);
+        });
+    };
+
     return {
         init: function () {
             handleOnResize();
+            handleMaterialDesignEffects();
             handleDropdowns();
 
             this.addResizeHandler(handleHeight);
