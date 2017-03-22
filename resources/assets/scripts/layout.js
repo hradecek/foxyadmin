@@ -39,7 +39,7 @@ var layout = function () {
                 body.removeClass('page-sidebar-closed');
                 sidebarMenu.removeClass('page-sidebar-menu-closed');
                 if ($.cookie) {
-                    $.cookie('sidebar_closed', '0');
+                    $.cookie('sidebar_closed', 0);
                 }
             } else {
                 body.addClass('page-sidebar-closed');
@@ -48,7 +48,7 @@ var layout = function () {
                     sidebarMenu.trigger('mouseleave');
                 }
                 if ($.cookie) {
-                    $.cookie('sidebar_close', 1);
+                    $.cookie('sidebar_closed', 1);
                 }
             }
 

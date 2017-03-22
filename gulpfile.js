@@ -147,9 +147,15 @@ var jquery = {
     src: './node_modules/jquery/dist',
     dst: pluginsDir + '/jquery/js'
 };
+
 var jqueryValidation = {
     src: './node_modules/jquery-validation',
     dst: pluginsDir + '/jquery-validation/js'
+};
+
+var jqueryCookie = {
+    src: './node_modules/jquery.cookie',
+    dst: pluginsDir + '/jquery-cookie/js'
 };
 
 gulp.task('jquery', function () {
@@ -161,6 +167,10 @@ gulp.task('jquery', function () {
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(jqueryValidation.dst));
+    gulp.src(jqueryCookie.src + '/jquery.cookie.js')
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(jqueryCookie.dst));
 });
 
 // App scripts
