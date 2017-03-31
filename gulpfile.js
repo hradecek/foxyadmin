@@ -215,8 +215,8 @@ gulp.task('user', function () {
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./public/user/js'));
-    gulp.src('./pacakages/foxytouch/user/src/public/img/*')
-        .pipe(gulp.dest('./public/user/img'));
+    gulp.src(['./packages/foxytouch/user/src/public/img/**/*'])
+        .pipe(gulp.dest('./public/user/img/'));
 });
 
 
