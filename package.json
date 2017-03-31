@@ -18,6 +18,7 @@
     "font-awesome": "~4.7.0",
     "bootstrap-sass": "~3.3.7",
     "bootstrap-switch": "~3.3.2",
+    "bootstrap-fileinput": "^4.3.8",
     "twitter-bootstrap-wizard": "~1.2.0"
   }
 }
