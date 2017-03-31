@@ -11,7 +11,10 @@ var del = require('del'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     prettify = require('gulp-prettify'),
-    minifyCss = require('gulp-clean-css');
+    minifyCss = require('gulp-clean-css'),
+    livereload = require('gulp-livereload');
+
+
 
 // Global variables
 var layoutDir = './public/layout',
@@ -22,6 +25,11 @@ var layoutDir = './public/layout',
 var bootstrap = {
     src: './node_modules/bootstrap-sass/assets/stylesheets',
     dst: pluginsDir + '/bootstrap'
+};
+
+var bootstrapFileInput = {
+    src: './node_modules/bootstrap-fileinput',
+    dst: pluginsDir + '/bootstrap-fileinput'
 };
 
 gulp.task('bootstrap', function () {
@@ -41,6 +49,16 @@ gulp.task('bootstrap', function () {
     // Copy JS
     gulp.src('./node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js')
         .pipe(gulp.dest(bootstrap.dst + '/js'));
+
+    // Copy bootstrap fileinput stylesheets
+    gulp.src(bootstrapFileInput.src + '/css/fileinput.min.css')
+        .pipe(rename('bootstrap-fileinput.min.css'))
+        .pipe(gulp.dest(bootstrapFileInput.dst + '/css'));
+
+    // Copy bootstrap fileinput javascripts
+    gulp.src(bootstrapFileInput.src + '/js/fileinput.min.js')
+        .pipe(rename('bootstrap-fileinput.min.js'))
+        .pipe(gulp.dest(bootstrapFileInput.dst + '/js'));
 });
 
 // Font-awesome
@@ -115,7 +133,8 @@ gulp.task('layout', function () {
         .pipe(gulp.dest(layout.dst + '/css'))
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(layout.dst + '/css'));
+        .pipe(gulp.dest(layout.dst + '/css'))
+        .pipe(livereload());
 });
 
 // Components
@@ -130,7 +149,8 @@ gulp.task('components', function () {
         .pipe(gulp.dest(components.dst + '/css'))
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(components.dst + '/css'));
+        .pipe(gulp.dest(components.dst + '/css'))
+        .pipe(livereload());
 });
 
 gulp.task('colors', function () {
@@ -139,7 +159,8 @@ gulp.task('colors', function () {
         .pipe(gulp.dest(components.dst + '/css'))
         .pipe(minifyCss())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(components.dst + '/css'));
+        .pipe(gulp.dest(components.dst + '/css'))
+        .pipe(livereload());
 });
 
 // JQuery
@@ -182,6 +203,28 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('./public/scripts'));
 });
 
+// User module
+gulp.task('user', function () {
+    gulp.src('./packages/foxytouch/user/src/resources/assets/sass/*.scss')
+        .pipe(sassc())
+        .pipe(gulp.dest('./public/user/css'))
+        .pipe(minifyCss())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./public/user/css'));
+    gulp.src('./packages/foxytouch/user/src/resources/assets/scripts/*.js')
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./public/user/js'));
+    gulp.src('./pacakages/foxytouch/user/src/public/img/*')
+        .pipe(gulp.dest('./public/user/img'));
+});
+
+
+gulp.task('blade', function () {
+    gulp.src('./**/*.blade.php')
+        .pipe(livereload());
+});
+
 // Build
 gulp.task('build', [
     'bootstrap',
@@ -199,11 +242,15 @@ gulp.task('build', [
 
 // Watch
 gulp.task('watch', function () {
-    gulp.watch('./resources/assets/sass/**/*.scss', ['build']);
+    livereload.listen();
+    gulp.watch('./resources/assets/sass/**/*.scss', ['sass']);
+    gulp.watch('./**/*.blade.php', ['blade']);
 });
 
 // Clean all generated files
 gulp.task('clean', function () {
+    del('./public/scripts');
     del('./public/global');
     del('./public/layout');
+    del('./public/user');
 });
