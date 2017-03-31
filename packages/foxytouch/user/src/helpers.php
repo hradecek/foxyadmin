@@ -10,6 +10,9 @@ if (! function_exists('print_users_roles')) {
 if (! function_exists('user_profile_picture_uri')) {
     function user_profile_picture_uri($user)
     {
-        return $user->profile_picture_uri ?: config()->get('users.default_picture');
+        $path = isset($user) && $user->profile_picture_uri ?
+            $user->profile_picture_uri :
+            config()->get('users.default_picture');
+        return asset($path, 'user');
     }
 }

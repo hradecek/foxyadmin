@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/bootstrap/css/bootstrap.min.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/plugins.css') }}"/>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('global/plugins/bootstrap-fileinput/css/bootstrap-fileinput.min.css') }}"/>
 <!-- Layout styles -->
 <link rel="stylesheet" type="text/css" href="{{ asset('layout/css/layout.css') }}"/>
 <!-- Theme styles -->
